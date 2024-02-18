@@ -1,12 +1,8 @@
 import express from "express";
-import { getEnvironment } from "../environment";
+import * as env from "@env/environment";
 
 const app = express();
 
-app.listen( (err: unknown) => {
-    if(err){
-        console.warn("Unable to start express application", err);
-    } else {
-        console.log(`Express listening on port: ${getEnvironment().API_PORT}`);
-    }
-})
+app.listen(env.values.API_PORT, () => {
+    console.log(`Express listening on port: ${env.values.API_PORT}`);
+});

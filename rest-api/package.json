@@ -4,7 +4,8 @@
   "description": "Express Web Server Boilerplate",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/api-server/app.ts"
+    "start:dev": "nodemon",
+    "start:dev:native": "IS_NATIVE=Y nodemon"
   },
   "author": "Njall Skarphedinsson",
   "license": "ISC",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@prisma/client": "^5.9.1",
     "dotenv": "^16.4.4",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "tsconfig-paths": "^4.2.0"
   }
 }

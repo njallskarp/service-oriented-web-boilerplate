@@ -23,6 +23,7 @@
 // START OF CONFIG / REGISTRY
 export type RequiredEnvironmentVariables = 'API_PORT';
 export type OptionalEnvironmentVariables = 'EXAMPLE';
+export type AllEnvironmentVariabls = RequiredEnvironmentVariables | OptionalEnvironmentVariables;
 
 
 export const REQUIRED_ENVIRONMENT_DESCRIPTION: RequiredEnvironment =  {

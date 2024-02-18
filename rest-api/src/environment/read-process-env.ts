@@ -13,9 +13,6 @@ const getRequiredEnvValue = (key: RequiredEnvironmentVariables): string => {
 
 
 const getOptionalEnvValue = (key: OptionalEnvironmentVariables): string | undefined => {
-    if(!(key in process.env)){
-        console.warn(`Optional environment variable  not found: '${key}' (${REQUIRED_ENVIRONMENT_DESCRIPTION[key as RequiredEnvironmentVariables]}).`)
-    }
     return process.env[key];
 }
 
