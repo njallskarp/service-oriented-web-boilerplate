@@ -4,8 +4,7 @@
   "description": "Express Web Server Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.ts",
-    "start": "nodemon src/app.ts",
+    "dev": "nodemon src/api-server/app.ts"
   },
   "author": "Njall Skarphedinsson",
   "license": "ISC",
@@ -18,6 +17,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.9.1",
+    "dotenv": "^16.4.4",
     "express": "^4.18.2"
   }
 }

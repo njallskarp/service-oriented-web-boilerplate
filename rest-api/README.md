@@ -45,10 +45,16 @@ npx prisma studio
 
 # TODO
 
-- [ ] Be able to run on nodemon in dev
+- [ ] Be able to run on nodemon in dev (native)
 - [ ] Environment module
 - [ ] Set up express route
 - [ ] Be able to run unit tests 
 - [ ] Be able to run api tests
 - [ ] Be able to run all tests
+- [ ] Setup logging (splunk)
+- [ ] Setup snowflake logging 
+- [ ] Setup alerts for logs (not sure)
+- [ ] Setup Some dashboard (grafana?)
 - 
+- ...
+- [ ] Dry run
