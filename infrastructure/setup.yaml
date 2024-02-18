@@ -1,0 +1,66 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation stack for a PostgreSQL RDB, Node.js TS Server, React Client, and a "Redis" backend service.
+
+Resources:
+  # MyDB:
+  #   Type: AWS::RDS::DBInstance
+  #   Properties:
+  #     DBInstanceClass: db.t2.micro
+  #     Engine: postgres
+  #     MasterUsername: <username>
+  #     MasterUserPassword: <password>
+  #     AllocatedStorage: 20
+
+  NodeJsEnvironment:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName: NodeJsApplication
+      EnvironmentName: NodeJsAPIEnvironment
+      SolutionStackName: "64bit Amazon Linux 2 v5.4.4 running Node.js 14"
+      # OptionSettings:
+      #   - Namespace: aws:elasticbeanstalk:application:environment
+      #     OptionName: DATABASE_URL
+      #     Value: !Sub 'postgres://${MyDB.MasterUsername}:${MyDB.MasterUserPassword}@${MyDB.Endpoint.Address}:${MyDB.Endpoint.Port}/dbname'
+
+  # ReactEnvironment:
+  #   Type: AWS::ElasticBeanstalk::Environment
+  #   Properties:
+  #     ApplicationName: ReactApplication
+  #     EnvironmentName: ReactClientEnvironment
+  #     SolutionStackName: "64bit Amazon Linux 2 v3.3.6 running Corretto 11"
+  #     OptionSettings:
+  #       - Namespace: aws:elasticbeanstalk:application:environment
+  #         OptionName: REACT_APP_API_URL
+  #         Value: !Sub 'http://${NodeJsEnvironment.CNAME}'
+
+  # RedisEnvironment:
+  #   Type: AWS::ElasticBeanstalk::Environment
+  #   Properties:
+  #     ApplicationName: RedisApplication
+  #     EnvironmentName: RedisBackendEnvironment
+  #     SolutionStackName: "64bit Amazon Linux 2 v3.3.6 running Corretto 11"
+  #     OptionSettings:
+  #       - Namespace: aws:elasticbeanstalk:application:environment
+  #         OptionName: REDIS_URL
+  #         Value: <Your-Redis-Connection-String> # Adjust based on your Redis setup
+  #     # Ensure only Node.js API server can access this environment
+  #     Tier:
+  #       Name: Worker
+  #       Type: Standard
+
+Outputs:
+  DatabaseURL:
+    Description: The RDS Database URL
+    Value: !Sub 'postgres://${MyDB.MasterUsername}:${MyDB.MasterUserPassword}@${MyDB.Endpoint.Address}:${MyDB.Endpoint.Port}/dbname'
+
+  NodeJsAPIURL:
+    Description: The URL of the Node.js API
+    Value: !GetAtt 'NodeJsEnvironment.EndpointURL'
+
+  ReactClientURL:
+    Description: The URL of the React Client
+    Value: !GetAtt 'ReactEnvironment.EndpointURL'
+
+  RedisBackendURL:
+    Description: The URL of the Redis Backend Service
+    Value: <Your-Redis-Connection-String> # Adjust based on your Redis setup
