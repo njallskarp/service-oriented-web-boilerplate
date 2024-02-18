@@ -4,7 +4,8 @@
   "description": "Express Web Server Boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "prisma migrate dev && nodemon src/app.ts"
+    "start": "nodemon src/app.ts",
+    "start": "nodemon src/app.ts",
   },
   "author": "Njall Skarphedinsson",
   "license": "ISC",
