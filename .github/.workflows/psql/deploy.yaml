@@ -1,0 +1,22 @@
+name: Deploy PSQL to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Docker Environment
+      run: |
+        echo "POSTGRES_USER=${{ secrets.PROD_POSTGRES_USER }}" >> $GITHUB_ENV
+        echo "POSTGRES_PASSWORD=${{ secrets.PROD_POSTGRES_PASSWORD }}" >> $GITHUB_ENV
+        echo "POSTGRES_DB=${{ secrets.PROD_POSTGRES_DB }}" >> $GITHUB_ENV
+        echo "DATABASE_URL=postgresql://${{ secrets.PROD_POSTGRES_USER }}:${{ secrets.PROD_POSTGRES_PASSWORD }}@postgres:5432/${{ secrets.PROD_POSTGRES_DB }}" >> $GITHUB_ENV
+    
+    # Add steps for Docker build, push, and deployment commands
+    # Use the environment variables set above in your Docker or deployment commands
