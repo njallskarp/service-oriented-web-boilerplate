@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: "20.x"
           cache: "npm"
+          cache-dependency-path: rest-api/package-lock.json
         working-directory: ./rest-api
       - name: Install dependencies using npm ci
         run: npm ci
