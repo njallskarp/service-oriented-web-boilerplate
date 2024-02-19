@@ -22,15 +22,16 @@ export const isDevelopmentEnvironment = (): boolean => {
 
 console.log(`Attempting to load environment variables (type='${process.env.NODE_ENV}').`)
 
+const ENV_FILE_PATH = '.env';
+const NATIVE_ENV_FLAG = 'Y';
+const optionalEnvFilePath = process.env.IS_NATIVE === NATIVE_ENV_FLAG ? ENV_FILE_PATH : undefined;
+if(optionalEnvFilePath !== undefined){
+    console.log("Development environment is native (reading from statically configured .env file)");
+}
+
 let environment: Environment;
 // development environment is supplied to NODE_ENV by docker-compose
 if(isDevelopmentEnvironment()){
-    const ENV_FILE_PATH = '.env';
-    const NATIVE_ENV_FLAG = 'Y';
-    const optionalEnvFilePath = process.env.IS_NATIVE === NATIVE_ENV_FLAG ? ENV_FILE_PATH : undefined;
-    if(optionalEnvFilePath !== undefined){
-        console.log("Development environment is native (reading from statically configured .env file)");
-    }
     environment = readEnvironment(optionalEnvFilePath);
 }
 // testing environment reads from an .env.test file
@@ -40,7 +41,7 @@ else if (isTestEnvironment()){
 }
 // production environment is supplied by IaC
 else if (isProductionEnvironment()){
-    environment = readEnvironment();
+    environment = readEnvironment(optionalEnvFilePath);
 // exit if environment is unknown
 } else {
     console.error(`Unknown environment specified '${process.env.NODE_ENV}'`);
