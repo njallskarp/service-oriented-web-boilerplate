@@ -1,29 +1,30 @@
 import { type AllEnvironmentVariabls, type Environment } from './config';
 import { readEnvironment } from './read-process-env';
 import { exit } from 'process';
+import {
+	isDevelopmentEnvironment,
+	isProductionEnvironment,
+	isTestEnvironment,
+} from './environment-checkers';
 
-enum Environments {
-	PRODUCTION = 'production',
-	TEST = 'test',
-	DEVELOPMENT = 'development',
-}
+// export environment checkers to be used throughout application
+export * from './environment-checkers';
 
-export const isProductionEnvironment = (): boolean => {
-	return process.env.NODE_ENV === Environments.PRODUCTION;
-};
-
-export const isTestEnvironment = (): boolean => {
-	return process.env.NODE_ENV === Environments.TEST;
-};
-
-export const isDevelopmentEnvironment = (): boolean => {
-	return process.env.NODE_ENV === Environments.DEVELOPMENT;
-};
-
-export const isDryRun = (): boolean => {
-	const DRY_RUN_FLAG = 'Y';
-	return process.env.DRY_RUN === DRY_RUN_FLAG;
-};
+/**
+ * This file is responsible for checking the environment
+ * and loading environment variables from the correct source
+ * based on the value of NODE_ENV
+ *
+ * The default behavior is to read environment variables that
+ * have already been passed to NODE_ENV. This is done by
+ * docker, docker-compose, and github work flows to name a few.
+ *
+ * There are a few exceptions. Sometimes users might want to request
+ * to run native (environment variable IS_NATIVE is set to 'Y'). This means
+ * that they want to read from a `.env` file instead.
+ *
+ * During testing the environment variables should be read from `.env.test`.
+ */
 
 console.log(
 	`Attempting to load environment variables (type='${process.env.NODE_ENV}').`
