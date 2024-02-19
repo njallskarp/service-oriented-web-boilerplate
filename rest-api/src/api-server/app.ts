@@ -28,6 +28,12 @@ app.get('/api/v1/items', (req, res) => {
 console.log('Express Routes:');
 expressListRoutes(app);
 
-app.listen(env.values.API_PORT, () => {
-	console.log(`\nExpress listening on port: ${env.values.API_PORT}`);
-});
+// dry run executes setup to ensure it is working correctly
+if (env.isDryRun()) {
+	console.log('Dry run complete. Exiting...');
+	process.exit(0); // Exit the process
+} else {
+	app.listen(env.values.API_PORT, () => {
+		console.log(`\nExpress listening on port: ${env.values.API_PORT}`);
+	});
+}

@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI Rest API
 
 on:
   pull_request:
@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      API_PORT: 3000
+
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
@@ -17,12 +20,16 @@ jobs:
         with:
           node-version: "20.x"
           cache: "npm"
+          cache-dependency-path: rest-api/package-lock.json
       - name: Install dependencies using npm ci
         run: npm ci
         working-directory: ./rest-api
       - name: Run ESLint
         run: npm run lint
         working-directory: ./rest-api
+      - name: Run Chai Tests (unit + api)
+        run: npm test
+        working-directory: ./rest-api
       - name: Dry run
-        run: npm run build # Adjust this command as needed for your project's dry run
+        run: npm run build && npm run start:prod:dry
         working-directory: ./rest-api
