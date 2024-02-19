@@ -6,9 +6,6 @@ on:
     paths:git 
       - "rest-api/**"
 
-env:
-  API_PORT: 3000
-
 jobs:
   build:
     runs-on: ubuntu-latest
