@@ -12,23 +12,14 @@
     "build": "tsc --project tsconfig.json && tsc-alias build/",
     "lint": "eslint ./src/** --ext .ts",
     "lint:fix": "eslint ./src/** --ext .ts --fix",
-    "test:api": "mocha -r ts-node/register 'src/**/*.api.test.ts'",
-    "test:api:watch": "mocha -r ts-node/register --watch 'src/**/*.api.test.ts'",
-    "test:unit": "mocha -r ts-node/register 'src/**/*.unit.test.ts'",
-    "test:unit:watch": "mocha -r ts-node/register --watch 'src/**/*.unit.test.ts'",
+    "test:api": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register 'src/**/*.api.test.ts'",
+    "test:api:watch": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register --watch 'src/**/*.api.test.ts'",
+    "test:unit": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register 'src/**/*.unit.test.ts' --exit",
+    "test:unit:watch": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register --watch 'src/**/*.unit.test.ts'",
     "test": "npm run test:unit && npm run test:api"
   },
   "author": "Njall Skarphedinsson",
   "license": "ISC",
-  "mocha": {
-    "extensions": [
-      "ts"
-    ],
-    "watch-files": [
-      "src/**/*.ts"
-    ],
-    "spec": "src/**/*.test.ts"
-  },
   "devDependencies": {
     "@types/chai": "^4.3.11",
     "@types/chai-http": "^4.2.0",
@@ -38,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "chai": "^4.3.7",
     "chai-http": "^4.4.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard-with-typescript": "^43.0.1",

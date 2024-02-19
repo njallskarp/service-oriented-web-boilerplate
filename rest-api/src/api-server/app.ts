@@ -37,3 +37,5 @@ if (env.isDryRun()) {
 		console.log(`\nExpress listening on port: ${env.values.API_PORT}`);
 	});
 }
+
+export default app;
