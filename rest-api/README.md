@@ -55,6 +55,7 @@ npx prisma studio
 -   [x] Be able to run on nodemon in dev (native)
 -   [x] Environment module
 -   [x] Set up express route
+-   [x] Set up workflow
 -   [ ] Be able to run unit tests
 -   [ ] Be able to run api tests
 -   [ ] Be able to run all tests
