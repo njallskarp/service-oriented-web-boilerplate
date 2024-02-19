@@ -24,6 +24,10 @@ module.exports = {
     "rules": {
         "no-tabs": "off",
         "indent": ["error", "tab"],
-        "@typescript-eslint/indent": ["error", "tab"]
+        "@typescript-eslint/indent": ["error", "tab"],
+        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        '@typescript-eslint/brace-style': "off",
+        "@typescript-eslint/non-nullable-type-assertion-style": "off"
     }
 }

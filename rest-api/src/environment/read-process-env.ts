@@ -15,7 +15,7 @@ const getRequiredEnvValue = (key: RequiredEnvironmentVariables): string => {
 		);
 		exit(1);
 	}
-	return process.env[key]!;
+	return process.env[key] as string;
 };
 
 const getOptionalEnvValue = (
@@ -27,7 +27,7 @@ const getOptionalEnvValue = (
 export const readEnvironment = (
 	envFilePath: string | undefined = undefined
 ): Environment => {
-	if (envFilePath) {
+	if (envFilePath !== undefined) {
 		dotenv.config({
 			path: envFilePath,
 		});

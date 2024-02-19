@@ -1,17 +1,28 @@
-name: Continous Integration (Api Server)
+name: Node.js CI
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "rest-api/**"
 
 jobs:
-  eslint:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '20'
-    - name: Install dependencies
-      run: npm install
-    - name: Run ESLint
-      run: npx eslint . --ext .js,.jsx,.ts,.tsx # Adjust file extensions as needed
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
+          cache: "npm"
+      - name: Install dependencies using npm ci
+        run: npm ci
+        working-directory: ./rest-api
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: ./rest-api
+      - name: Dry run
+        run: npm run build # Adjust this command as needed for your project's dry run
+        working-directory: ./rest-api
