@@ -25,8 +25,6 @@ app.get('/api/v1/items', (req, res) => {
 	]);
 });
 
-var name = 'john';
-
 console.log('Express Routes:');
 expressListRoutes(app);
 
