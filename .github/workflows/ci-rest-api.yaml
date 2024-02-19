@@ -3,13 +3,15 @@ name: CI Rest API
 on:
   pull_request:
     branches: [main]
-    paths:
+    paths:git 
       - "rest-api/**"
+
+env:
+  API_PORT: 3000
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
@@ -25,5 +27,4 @@ jobs:
         run: npm run lint
         working-directory: ./rest-api
       - name: Dry run
-        run: npm run build # Adjust this command as needed for your project's dry run
-        working-directory: ./rest-api
+        run: npm run build && npm run start:prod:dry
