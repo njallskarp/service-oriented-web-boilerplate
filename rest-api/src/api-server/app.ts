@@ -28,14 +28,6 @@ app.get('/api/v1/items', (req, res) => {
 console.log('Express Routes:');
 expressListRoutes(app);
 
-const alwaysTrue = (): boolean => {
-	return true;
-};
-
-if (alwaysTrue()) {
-	throw new Error('Testing dry run failure');
-}
-
 // dry run executes setup to ensure it is working correctly
 if (env.isDryRun()) {
 	console.log('Dry run complete. Exiting...');
