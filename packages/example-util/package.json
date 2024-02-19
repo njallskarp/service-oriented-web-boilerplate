@@ -1,0 +1,14 @@
+{
+  "name": "@monorepo/example-util",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
