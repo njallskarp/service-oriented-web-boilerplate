@@ -26,6 +26,11 @@ export * from './environment-checkers';
  * During testing the environment variables should be read from `.env.test`.
  */
 
+export const isDryRun = (): boolean => {
+	const DRY_RUN_FLAG = 'Y';
+	return process.env.DRY_RUN === DRY_RUN_FLAG;
+};
+
 console.log(
 	`Attempting to load environment variables (type='${process.env.NODE_ENV}').`
 );
