@@ -6,9 +6,9 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:dev:native": "IS_NATIVE=Y nodemon",
-    "start:prod": "NODE_ENV=production node build/src/api-server/app.js",
-    "start:prod:native": "IS_NATIVE=Y NODE_ENV=production node build/src/api-server/app.js",
-    "start:prod:dry": "DRY_RUN=Y NODE_ENV=production node build/src/api-server/app.js",
+    "start:prod": "NODE_ENV=production node build/api-server/app.js",
+    "start:prod:native": "IS_NATIVE=Y NODE_ENV=production node build/api-server/app.js",
+    "start:prod:dry": "DRY_RUN=Y NODE_ENV=production node build/api-server/app.js",
     "build": "tsc --project tsconfig.json && tsc-alias build/",
     "lint": "eslint ./src/** --ext .ts",
     "lint:fix": "eslint ./src/** --ext .ts --fix"
