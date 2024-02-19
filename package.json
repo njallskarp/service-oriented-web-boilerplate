@@ -5,8 +5,8 @@
   "description": "## Overview",
   "version": "1.0.0",
   "scripts": {
-    "lint": "eslint ./** --ext .ts",
-    "lint:fix": "eslint ./** --ext .ts --fix",
+    "lint": "eslint packages/ services/ --ext .ts",
+    "lint:fix": "eslint packages/ services/ --ext .ts --fix",
     "build": "yarn workspaces foreach run build"
   },
   "dependencies": {
