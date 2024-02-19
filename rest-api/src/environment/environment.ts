@@ -20,6 +20,11 @@ export const isDevelopmentEnvironment = (): boolean => {
 	return process.env.NODE_ENV === Environments.DEVELOPMENT;
 };
 
+export const isDryRun = (): boolean => {
+	const DRY_RUN_FLAG = 'Y';
+	return process.env.DRY_RUN === DRY_RUN_FLAG;
+};
+
 console.log(
 	`Attempting to load environment variables (type='${process.env.NODE_ENV}').`
 );
