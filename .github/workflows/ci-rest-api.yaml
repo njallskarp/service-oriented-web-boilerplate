@@ -28,16 +28,4 @@ jobs:
         run: npm run lint
         working-directory: ./rest-api
       - name: Dry run
-        run: npm run build
-        working-directory: ./rest-api
-      - name: List output directory
-        run: ls -alh ./rest-api/
-      - name: List output directory
-        run: ls -alh ./rest-api/build/
-      - name: List output directory
-        run: ls -alh ./rest-api/build/src/
-      - name: List output directory
-        run: ls -alh ./rest-api/build/src/api-server/
-      - name: Dry run
-        run: npm run start:prod:dry
-        working-directory: ./rest-api
+        run: npm run build && npm run start:prod:dry
