@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int      @id @default(autoincrement())
+  email             String   @unique
+  createdAt         DateTime @default(now())
+  name              String
+  oauthId           String
+  oauthAccessToken  String?
+  oauthRefreshToken String?
+  oauthTokenExpiry  DateTime
+  oauthProvider     String
+  profilePicture    String?
+
+  Purchase Purchase[]
+
+  @@index([oauthId], name: "oauthId")
+}
+
+model Purchase {
+  createdAt      DateTime @default(now())
+  userId         Int
+  courseId       Int
+  stripeId       Int
+  purchaseAmount Int
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@id([userId, courseId])
+}
+
+model Course {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  title        String
+  description  String
+  thumbnailUrl String
+  price        Int
+
+  Purchase Purchase[]
+  modules  Module[]
+}
+
+model Module {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  title        String
+  moduleOrder  Int
+  description  String
+  thumbnailUrl String
+  courseId     Int
+
+  course Course  @relation(fields: [courseId], references: [id])
+  videos Video[]
+}
+
+model Video {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  title      String
+  videoOrder Int
+  moduleId   Int
+
+  module Module @relation(fields: [moduleId], references: [id])
+}
