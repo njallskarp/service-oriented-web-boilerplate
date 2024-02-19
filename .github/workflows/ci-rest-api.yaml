@@ -3,7 +3,7 @@ name: CI Rest API
 on:
   pull_request:
     branches: [main]
-    paths:git 
+    paths:
       - "rest-api/**"
 
 jobs:
