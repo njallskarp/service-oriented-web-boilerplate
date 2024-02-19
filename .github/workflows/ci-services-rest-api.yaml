@@ -23,8 +23,6 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: '20.x'
-                  cache: 'yarn'
-                  cache-dependency-path: services/rest-api/yarn.lock
             - name: Install dependencies using yarn
               run: yarn install --frozen-lockfile
             - name: Run Chai Tests (unit + api)
