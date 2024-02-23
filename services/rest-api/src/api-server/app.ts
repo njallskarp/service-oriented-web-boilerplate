@@ -1,6 +1,6 @@
 import express from 'express';
 import expressListRoutes from 'express-list-routes';
-import * as env from '@env/environment';
+import * as env from 'src/environment';
 
 const app = express();
 

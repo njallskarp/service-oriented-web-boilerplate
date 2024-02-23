@@ -1,0 +1,18 @@
+{
+  "name": "@monorepo/environment",
+  "version": "1.0.0",
+  "main": "dist/environment.js",
+  "types": "dist/environment.d.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register 'src/**/*.unit.test.ts' --exit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.4"
+  }
+}

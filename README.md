@@ -54,7 +54,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 
 ## Next up
 
--   Make new services / packages structure pass tests + lints
 -   migrate ./services/rest-api/environment to ./packages/environment
 -   set up auth service
 
