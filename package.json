@@ -25,5 +25,6 @@
     "typescript": "^5.3.3"
   },
   "author": "Njall Skarphedinsson",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "yarn@4.1.0"
 }
