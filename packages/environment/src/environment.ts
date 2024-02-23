@@ -11,22 +11,14 @@ import dotenv from 'dotenv';
 export * from './environment-checkers';
 
 /**
- * This file is responsible for checking the environment
- * and loading environment variables from the correct source
- * based on the value of NODE_ENV
+ * Reads environment values from file if either:
+ * 	- user asks for native mode (read from .env)
+ *  - user is running tests (read from .env.test)
  *
- * The default behavior is to read environment variables that
- * have already been passed to NODE_ENV. This is done by
- * docker, docker-compose, and github work flows to name a few.
- *
- * There are a few exceptions. Sometimes users might want to request
- * to run native (environment variable IS_NATIVE is set to 'Y'). This means
- * that they want to read from a `.env` file instead.
- *
- * During testing the environment variables should be read from `.env.test`.
+ * Otherwise, we assume that the process env already
+ * contains the required environment variables.
  */
-
-const optionallyReadNativeEnv = () => {
+const optionallyReadNativeEnv = (): void => {
 	if (isTestEnvironment()) {
 		const TEST_ENV_FILE_PATH = '.env.test';
 		dotenv.config({
@@ -43,12 +35,18 @@ const optionallyReadNativeEnv = () => {
 	}
 };
 
+/**
+ * Prints out all the environment variables while
+ * masking out secrets, tokens, and keys.
+ *
+ * @param environment An environment dictionary
+ */
 const consoleLogEnv = <
 	RequiredKeys extends ConstStringUnion,
 	OptionalKeys extends ConstStringUnion,
 >(
 	environment: Environment<RequiredKeys, OptionalKeys>
-) => {
+): void => {
 	const SUFFIXES_TO_MASK = ['SECRET', 'TOKEN', 'KEY'];
 
 	console.log('Successfully loaded environment variables:');
@@ -65,6 +63,13 @@ const consoleLogEnv = <
 	console.log('');
 };
 
+/**
+ * Reads, validates, and returns env as a statically typed object.
+ *
+ * @param requiredKeysDescription A dictionary of environment variables (keys) with descriptions (values)
+ * @param optionalKeysDescription A dictionary of environment variables (keys) with descriptions (values)
+ * @returns
+ */
 export function read<
 	RequiredKeys extends ConstStringUnion,
 	OptionalKeys extends ConstStringUnion,

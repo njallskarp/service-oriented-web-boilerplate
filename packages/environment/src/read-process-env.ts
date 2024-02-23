@@ -1,32 +1,35 @@
 import { exit } from 'process';
-import dotenv from 'dotenv';
 import {
-	ConstStringUnion,
-	Environment,
-	EnvkeysDescription,
-	PartialEnvironment,
+	type ConstStringUnion,
+	type Environment,
+	type EnvkeysDescription,
 } from './types';
 
-const getRequiredEnvValue = <RequiredKeys extends ConstStringUnion>(
-	key: RequiredKeys,
-	requiredKeysDescription: Record<RequiredKeys, string>
-): string => {
-	if (!(key in process.env)) {
-		console.error(
-			`Stopping process. Please add '${key}' (${requiredKeysDescription[key as RequiredKeys]}) to your environment.`
-		);
-		exit(1);
-	}
-	return process.env[key] as string;
-};
-
-const getOptionalEnvValue = <OptionalKeys extends ConstStringUnion>(
-	key: OptionalKeys
+/**
+ * Read value from the node process environment. If
+ * the value does not exist, then return undefined
+ *
+ *
+ *
+ * @param variableName The environment variable name
+ * @returns the value or undefined
+ */
+const getEnvironmentVariableValue = (
+	variableName: string
 ): string | undefined => {
-	return process.env[key];
+	return process.env[variableName];
 };
 
-export const getValues = <
+/**
+ * Returns a validated environment object
+ * with (at least) all the required environment
+ * variables with values
+ *
+ * @param requiredKeysDescription A dictionary of environment variables (keys) with descriptions (values)
+ * @param optionalKeysDescription A dictionary of environment variables (keys) with descriptions (values)
+ * @returns
+ */
+export const getEnvironmentObject = <
 	RequiredKeys extends ConstStringUnion,
 	OptionalKeys extends ConstStringUnion,
 >(
@@ -36,14 +39,18 @@ export const getValues = <
 	const output: Partial<Record<RequiredKeys | OptionalKeys, string>> = {};
 
 	for (const key in requiredKeysDescription) {
-		output[key as RequiredKeys] = getRequiredEnvValue<RequiredKeys>(
-			key as RequiredKeys,
-			requiredKeysDescription
-		);
+		const value = getEnvironmentVariableValue(key);
+		if (value === undefined) {
+			console.error(
+				`Stopping process. Please add '${key}' (${requiredKeysDescription[key]}) to your environment.`
+			);
+			exit(1);
+		}
+		output[key] = value;
 	}
 
 	for (const key in optionalKeysDescription) {
-		const value = getOptionalEnvValue(key as OptionalKeys);
+		const value = getEnvironmentVariableValue(key);
 		if (value !== undefined) {
 			output[key as OptionalKeys] = value;
 		}
