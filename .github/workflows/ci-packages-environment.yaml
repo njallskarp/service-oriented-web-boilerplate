@@ -1,4 +1,4 @@
-name: CI Rest API
+name: CI Packages Environment
 
 on:
     pull_request:
