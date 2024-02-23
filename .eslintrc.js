@@ -1,33 +1,37 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
+    env: {
+        browser: true,
+        es2021: true,
     },
-    "extends": "standard-with-typescript",
-    "overrides": [
-        {
-            "env": {
-                "node": true
-            },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
-        }
+    extends: [
+        "standard-with-typescript",
+        "prettier", // Ensure this is "prettier" to avoid conflicts
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    overrides: [
+        {
+            env: {
+                node: true,
+            },
+            files: [
+                ".eslintrc.{js,cjs}",
+            ],
+            parserOptions: {
+                sourceType: "script",
+            },
+        },
+    ],
+    parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
     },
-    "rules": {
-        "no-tabs": "off",
-        "indent": ["error", "tab"],
-        "@typescript-eslint/indent": ["error", "tab"],
-        "@typescript-eslint/semi": "off",
+    plugins: [
+        "prettier", // Ensure Prettier plugin is correctly referred
+    ],
+    rules: {
+        "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/comma-dangle": "off",
-        '@typescript-eslint/brace-style': "off",
-        "@typescript-eslint/non-nullable-type-assertion-style": "off"
-    }
-}
+        "@typescript-eslint/brace-style": "off",
+        "@typescript-eslint/non-nullable-type-assertion-style": "off",
+        "prettier/prettier": "error", // Enable Prettier rules to report as ESLint errors
+    },
+};

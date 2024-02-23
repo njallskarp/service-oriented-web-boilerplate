@@ -5,8 +5,8 @@ type RequiredEnvironmentVariables = 'API_PORT' | 'DB_URL' | 'AUTH_SERVICE_URL';
 type OptionalEnvironmentVariables = 'EXAMPLE';
 
 export const values = read<
-RequiredEnvironmentVariables,
-OptionalEnvironmentVariables
+	RequiredEnvironmentVariables,
+	OptionalEnvironmentVariables
 >(
 	{
 		API_PORT: 'The port rest-api will listen to.',
