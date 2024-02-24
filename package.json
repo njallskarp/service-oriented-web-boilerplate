@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "eslint packages/ services/ --ext .ts",
     "lint:fix": "eslint --fix packages/ services/ --ext .ts ",
+    "prebuild": "yarn install",
     "build": "yarn workspaces foreach -A run build"
   },
   "devDependencies": {

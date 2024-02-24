@@ -3,5 +3,7 @@ description: 'Builds the packages'
 runs:
     using: 'composite'
     steps:
+        - run: yarn prebuild
+          shell: bash
         - run: yarn build
           shell: bash
