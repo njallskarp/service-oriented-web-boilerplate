@@ -3,6 +3,12 @@ description: 'Builds the packages'
 runs:
     using: 'composite'
     steps:
+        - name: Setup Node.js
+          uses: actions/setup-node@v2
+          with:
+              node-version: '20.x'
+              cache: 'yarn'
+        - run: yarn --version
         - run: yarn prebuild
           shell: bash
         - run: yarn build
