@@ -22,7 +22,11 @@ jobs:
                   node-version: '20.x'
                   cache: 'yarn'
 
+            - name: Build packages
+              uses: ./.github/actions/build-packages-at-root
+
             - name: Install dependencies with Yarn
+              working-directory: ./services/rest-api
               run: yarn
 
             - name: Proceed with your build steps
