@@ -8,6 +8,10 @@ runs:
           with:
               node-version: '20.x'
               cache: 'yarn'
+        - run: npm i -g corepack
+          shell: bash
+        - run: corepack enable
+          shell: bash
         - run: yarn --version
           shell: bash
         - run: yarn prebuild
