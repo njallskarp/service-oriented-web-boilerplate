@@ -5,7 +5,16 @@
   "types": "dist/environment.d.ts",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.11.19",
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.20",
+    "@types/sinon": "^17.0.3",
+    "chai": "^4.3.7",
+    "mocha": "^10.3.0",
+    "nodemon": "^3.0.3",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
   },
   "scripts": {
@@ -13,6 +22,7 @@
     "test": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register 'src/**/*.unit.test.ts' --exit"
   },
   "dependencies": {
+    "chai": "^5.1.0",
     "dotenv": "^16.4.4"
   }
 }

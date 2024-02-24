@@ -7,13 +7,21 @@ runs:
           uses: actions/setup-node@v2
           with:
               node-version: '20.x'
+
         - run: npm i -g corepack
           shell: bash
+
+        - run: npm install -g cross-env
+          shell: bash
+
         - run: corepack enable
           shell: bash
-        - run: yarn --version
+        
+        - run: yarn install
           shell: bash
+
         - run: yarn prebuild
           shell: bash
+
         - run: yarn build
           shell: bash
