@@ -14,6 +14,14 @@ This monorepo houses a collection of services that together form a comprehensive
 -   **infrastructure**: Started. Contains CloudFormation templates and Docker-compose files for infrastructure as code (IaC) and local development setup.
 -   **auth-service**: Planned. Will handle authentication and authorization across the system.
 
+## Adding A Service
+
+TODO: write more information on this
+
+Run `yarn` after `cd`-ing into the service to link it
+
+## Adding a package
+
 ## Getting Started
 
 To get started with this monorepo, you'll need to have Docker, Node.js, and Yarn installed on your system for local development and testing.
@@ -53,7 +61,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 # TODO list
 
 ## Next up
-
 
 -   Make new services / packages structure pass tests + lints
 

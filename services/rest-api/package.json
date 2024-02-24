@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "@services/rest-api",
   "version": "1.0.0",
   "description": "Express Web Server Boilerplate",
   "main": "index.js",
@@ -19,8 +19,8 @@
   "author": "Njall Skarphedinsson",
   "license": "ISC",
   "devDependencies": {
-    "@monorepo/environment": "*",
-    "@monorepo/example-util": "*",
+    "@packages/environment": "*",
+    "@packages/example-util": "*",
     "@types/chai": "^4.3.11",
     "@types/express": "^4.17.21",
     "@types/mocha": "^10.0.6",

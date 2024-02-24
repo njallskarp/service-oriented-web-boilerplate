@@ -1,4 +1,4 @@
-import { getValues } from './read-process-env';
+import { getEnvironmentObject } from './read-process-env';
 import { isTestEnvironment, shouldReadNative } from './environment-checkers';
 import type {
 	ConstStringUnion,
@@ -83,10 +83,8 @@ export function read<
 
 	optionallyReadNativeEnv();
 
-	const environment: Environment<RequiredKeys, OptionalKeys> = getValues(
-		requiredKeysDescription,
-		optionalKeysDescription
-	);
+	const environment: Environment<RequiredKeys, OptionalKeys> =
+		getEnvironmentObject(requiredKeysDescription, optionalKeysDescription);
 
 	consoleLogEnv(environment);
 

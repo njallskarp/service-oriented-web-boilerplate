@@ -25,7 +25,7 @@ To include this package in a service, add the following line to your package.jso
 ```json
 {
 	"dependencies": {
-		"@monorepo/environment": "*"
+		"@packages/environment": "*"
 	}
 }
 ```

@@ -1,5 +1,5 @@
-import { read } from '@monorepo/environment';
-export * from '@monorepo/environment';
+import { read } from '@packages/environment';
+export * from '@packages/environment';
 
 type RequiredEnvironmentVariables = 'API_PORT' | 'DB_URL' | 'AUTH_SERVICE_URL';
 type OptionalEnvironmentVariables = 'EXAMPLE';

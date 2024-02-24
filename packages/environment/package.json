@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/environment",
+  "name": "@packages/environment",
   "version": "1.0.0",
   "main": "dist/environment.js",
   "types": "dist/environment.d.ts",
