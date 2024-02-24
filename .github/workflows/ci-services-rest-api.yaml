@@ -24,8 +24,7 @@ jobs:
               with:
                   node-version: '20.x'
             - name: Build packages
-              run: ../../
-              uses: ./.github/actions/build-packages
+              uses: ./.github/actions/build-packages-for-service
             - name: Install dependencies using yarn
               run: yarn install --frozen-lockfile
             - name: Run Chai Tests (unit + api)
