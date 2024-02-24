@@ -2,7 +2,7 @@ name: CI Packages Environment
 
 on:
     pull_request:
-        branches: [main]
+        branches: [never]
         paths:
             - 'packages/environment/**'
 
