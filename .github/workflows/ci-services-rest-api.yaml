@@ -18,6 +18,7 @@ jobs:
             - name: Proceed with your build steps
               working-directory: ./services/rest-api
               run: |
+                  yarn 
                   yarn test
                   yarn build
                   yarn start:prod:dry
