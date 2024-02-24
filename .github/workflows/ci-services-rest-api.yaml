@@ -10,10 +10,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
-        defaults:
-            run:
-                working-directory: ./services/rest-api
-
         env:
             API_PORT: 3000
 
@@ -38,6 +34,7 @@ jobs:
               run: yarn
 
             - name: Proceed with your build steps
+              working-directory: ./services/rest-api
               run: |
                   yarn test
                   yarn build
