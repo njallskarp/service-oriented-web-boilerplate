@@ -13,12 +13,18 @@ jobs:
             API_PORT: 3000
         steps:
             - uses: actions/checkout@v3
+            
             - name: Build packages
-              uses: ./.github/actions/build-packages-at-root
-            - name: Proceed with your build steps
+              uses: ./.github/actions/build-monorepo
+
+            - name: Run Tests (Api + Unit)
               working-directory: ./services/rest-api
-              run: |
-                  yarn 
-                  yarn test
-                  yarn build
-                  yarn start:prod:dry
+              run: yarn test
+
+            - name: Build TypeScript
+              working-directory: ./services/rest-api
+              run: yarn build
+
+            - name: Dry Run code
+              working-directory: ./services/rest-api
+              run: yarn start:prod:dry

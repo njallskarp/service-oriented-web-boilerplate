@@ -1,9 +1,0 @@
-name: 'Build Packages'
-description: 'Builds the packages'
-runs:
-    using: 'composite'
-    steps:
-        - run: cd ../../
-          shell: bash
-        - run: yarn build
-          shell: bash

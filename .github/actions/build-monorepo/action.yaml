@@ -1,5 +1,5 @@
-name: 'Build Packages'
-description: 'Builds the packages'
+name: 'Build Monorepo'
+description: 'Builds monorepo and sets up Node + Yarn'
 runs:
     using: 'composite'
     steps:

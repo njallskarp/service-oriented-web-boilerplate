@@ -16,6 +16,8 @@ jobs:
 
         env:
             API_PORT: 3000
+            DB_URL: "should-not-be-passed"
+            AUTH_SERVICE_URL: "should-not-be-passed"
 
         steps:
             - uses: actions/checkout@v2
