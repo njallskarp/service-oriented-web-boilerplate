@@ -1,12 +1,13 @@
-name: Lint Code Base
+name: CI Packages Environment
 
 on:
     pull_request:
         branches: [main]
-    workflow_dispatch:
+        paths:
+            - 'packages/environment/**'
 
 jobs:
-    eslint:
+    build:
         runs-on: ubuntu-latest
 
         steps:
@@ -15,5 +16,6 @@ jobs:
             - name: Build packages
               uses: ./.github/actions/build-monorepo
 
-            - name: Run ESLint
-              run: yarn lint
+            - name: Run Chai Tests (unit + api)
+              working-directory: ./packages/environment
+              run: yarn test

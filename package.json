@@ -1,15 +1,17 @@
 {
   "name": "monorepo",
   "private": true,
-  "workspaces": [ "packages/*","services/*"],
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
   "description": "## Overview",
   "version": "1.0.0",
   "scripts": {
     "lint": "eslint packages/ services/ --ext .ts",
-    "lint:fix": "eslint packages/ services/ --ext .ts --fix",
-    "build": "yarn workspaces foreach run build"
-  },
-  "dependencies": {
+    "lint:fix": "eslint --fix packages/ services/ --ext .ts ",
+    "prebuild": "yarn workspaces foreach -A run install",
+    "build": "yarn workspaces foreach -A run build"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
@@ -20,9 +22,10 @@
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-promise": "^6.1.1",
     "lerna": "^8.1.2",
-    "typescript": "^5.3.3",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
   },
   "author": "Njall Skarphedinsson",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "yarn@4.1.0"
 }
