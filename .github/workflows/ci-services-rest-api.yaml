@@ -23,7 +23,7 @@ jobs:
 
             - name: Install yarn
               run: |
-                  npm install -g yarn
+                  npm install yarn
                   yarn set version berry
 
             - name: Install dependencies with Yarn
