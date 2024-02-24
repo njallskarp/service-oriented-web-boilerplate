@@ -25,10 +25,6 @@ jobs:
               run: |
                   npm install -g yarn
                   yarn set version berry
-                  yarn set version 4.1.0
-
-            - name: Verify Yarn Version
-              run: yarn --version
 
             - name: Install dependencies with Yarn
               run: yarn
