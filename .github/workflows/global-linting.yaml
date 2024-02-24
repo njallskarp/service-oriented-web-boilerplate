@@ -16,7 +16,7 @@ jobs:
               with:
                   node-version: '20'
             - name: Build packages
-              uses: ./.github/actions/build-packages
+              uses: ./.github/actions/build-packages.yaml
             - name: Install Dependencies
               run: yarn
             - name: Run ESLint
