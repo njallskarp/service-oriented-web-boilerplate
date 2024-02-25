@@ -1,0 +1,34 @@
+name: CI Authentication Service
+
+on:
+    pull_request:
+        branches: [main]
+        paths:
+            - 'services/authentication-service/**'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            API_PORT: 3000
+            GOOGLE_CLIENT_ID: 'should-not-be-passed'
+            GOOGLE_REDIRECT_URI: 'should-not-be-passed'
+            GOOGLE_CLIENT_SECRET: 'should-not-be-passed'
+            WEB_APP_URL: 'should-not-be-passed'
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Build packages
+              uses: ./.github/actions/build-monorepo
+
+            - name: Run Tests (Api + Unit)
+              working-directory: ./services/authentication-service
+              run: yarn test
+
+            - name: Build TypeScript
+              working-directory: ./services/authentication-service
+              run: yarn build
+
+            - name: Dry Run code
+              working-directory: ./services/authentication-service
+              run: yarn start:prod:dry

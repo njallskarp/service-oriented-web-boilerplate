@@ -5,9 +5,9 @@ export const authProviders = {
 export type OAauthProviders = keyof typeof authProviders;
 
 export interface AuthProvider {
-	getAuthUrl(): string;
-	getToken(code: string): Promise<TokenData>;
-	getUserProfileFromServer(accessToken: string, idToken: string): Promise<UserResponseFromToken>;
+	getAuthUrl: () => string;
+	getToken: (code: string) => Promise<TokenData>;
+	getUserProfileFromServer: (accessToken: string, idToken: string) => Promise<UserResponseFromToken>;
 }
 
 export interface TokenData {

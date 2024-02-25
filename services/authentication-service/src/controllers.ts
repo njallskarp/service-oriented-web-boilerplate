@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { type Request, type Response } from 'express';
 import * as env from './environment';
 import { HttpError, StatusCodes } from '@packages/http-utils';
 import jwt from 'jsonwebtoken';
@@ -6,24 +6,24 @@ import { providers } from './provider-registry';
 
 type ProviderTypeUnion = keyof typeof providers;
 
-export const helloWorld = (req: Request, res: Response) => {
+export const helloWorld = (req: Request, res: Response): void => {
 	res.send('<h1>Hello, World</h1>');
 };
 
-export const handleAuthRedirect = (req: Request, res: Response) => {
+export const handleAuthRedirect = (req: Request, res: Response): void => {
 	const provider = req.params.provider;
 	const authProvider = providers[provider as ProviderTypeUnion];
 	res.redirect(authProvider.getAuthUrl());
 };
 
-export const handleAuthCallback = async (req: Request, res: Response) => {
+export const handleAuthCallback = async (req: Request, res: Response): Promise<void> => {
 	const provider = req.params.provider;
 	const authProvider = providers[provider as ProviderTypeUnion];
 	const tokenData = await authProvider.getToken(req.query.code as string).catch((e) => {
 		throw new HttpError(StatusCodes.FORBIDDEN, 'Unable to authenticate with code');
 	});
 
-	const decodedUserData = jwt.decode(tokenData.idToken);
+	jwt.decode(tokenData.idToken);
 
 	// TODO: upsert the user
 

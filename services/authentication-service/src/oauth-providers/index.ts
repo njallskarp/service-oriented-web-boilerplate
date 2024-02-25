@@ -1,1 +1,1 @@
-export { GoogleAuthProvider } from "./google/google-auth-provider"
+export { GoogleAuthProvider } from './google/google-auth-provider';

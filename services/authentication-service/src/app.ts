@@ -6,9 +6,7 @@ import { ensureValidProvider, errorHandler } from './middleware';
 
 const app = express();
 
-app.use(errorHandler);
-
-app.get('/api/hello_world', helloWorld);
+app.get('/hello_world', helloWorld);
 app.get('/auth/:provider', [ensureValidProvider], handleAuthRedirect);
 app.get('/auth/:provider/callback', [ensureValidProvider], handleAuthCallback);
 
@@ -22,5 +20,7 @@ if (env.isDryRun()) {
 		console.log(`\nExpress listening on port: ${env.values.API_PORT}`);
 	});
 }
+
+app.use(errorHandler);
 
 export default app;

@@ -1,6 +1,6 @@
-import { AuthProvider, OAauthProviders, TokenData, UserResponseFromToken } from '../../types';
+import { type AuthProvider, type OAauthProviders, type TokenData, type UserResponseFromToken } from '../../types';
 import * as env from '../../environment';
-import { GoogleTokenResult, GoogleUserResult } from './interfaces';
+import { type GoogleTokenResult, type GoogleUserResult } from './interfaces';
 import axios from 'axios';
 
 export class GoogleAuthProvider implements AuthProvider {

@@ -62,18 +62,22 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 
 ## Next up
 
-- set up auth service
-- set up next react project and make it call auth service directly (make it work e2e)
-- set up Api Gateway with a routing table
-- call from next react app to auth service via api gateway
+- make NExt JS app with simple auth
 - display some data in the UI that verifies that everything works OK
 - set up auth database
 - set up a logging package (console)
 - start logging times and everything for all routes
 - set up TODO table in rest-api
 - be able to create todos in front end log in and log out and it persists per user
-
-- start logging user signup events somehow
+- start logging user signup events
+- Create a custom express package that adds start time, request id, service name, service version, environment info (i.e. local, dev, test, prod)
+- create a logging package that logs events and replaces console. completely
+- README everywhere
+- comment all code
+- unit tests everywhere
+- api tests everywhere
+- end2end tests as needed
+- wordpress SAAS site
 
 ## Done
 
@@ -88,7 +92,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 ### Rest-api
 
 -   [ ] Swagger
--   [ ] Set up console logger
 -   [ ] Basic @Controller (status codes, error handling, status codes,)
 -   [ ] Models (simple TODO table)
 -   [ ] Set up models for dummy schema
