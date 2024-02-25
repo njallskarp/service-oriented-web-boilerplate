@@ -665,6 +665,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@packages/http-utils@npm:*, @packages/http-utils@workspace:packages/http-utils":
+  version: 0.0.0-use.local
+  resolution: "@packages/http-utils@workspace:packages/http-utils"
+  dependencies:
+    "@types/node": "npm:^20.11.19"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -678,6 +687,38 @@ __metadata:
   checksum: 10c0/3f7536bc7f57320ab2cf96f8973664bef624710c403357429fbf680a5c3b4843c1dbd389bb43daa6b1f6f1f007bb082f5abcb76bb2b5dc9f421647743b71d3d8
   languageName: node
   linkType: hard
+
+"@services/authentication-service@workspace:services/authentication-service":
+  version: 0.0.0-use.local
+  resolution: "@services/authentication-service@workspace:services/authentication-service"
+  dependencies:
+    "@packages/environment": "npm:*"
+    "@packages/example-util": "npm:*"
+    "@packages/http-utils": "npm:*"
+    "@types/chai": "npm:^4.3.11"
+    "@types/express": "npm:^4.17.21"
+    "@types/mocha": "npm:^10.0.6"
+    "@types/node": "npm:^20.11.20"
+    "@types/sinon": "npm:^17.0.3"
+    "@typescript-eslint/eslint-plugin": "npm:^6.21.0"
+    "@typescript-eslint/parser": "npm:^7.0.2"
+    axios: "npm:^1.6.7"
+    chai: "npm:^4.3.7"
+    chai-http: "npm:^4.4.0"
+    cross-env: "npm:^7.0.3"
+    dotenv: "npm:^16.4.4"
+    eslint: "npm:^8.57.0"
+    express: "npm:^4.18.2"
+    express-list-routes: "npm:^1.1.9"
+    mocha: "npm:^10.3.0"
+    nodemon: "npm:^3.0.3"
+    sinon: "npm:^17.0.1"
+    ts-node: "npm:^10.9.2"
+    tsc-alias: "npm:^1.8.8"
+    tsconfig-paths: "npm:^4.2.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
 
 "@services/rest-api@workspace:services/rest-api":
   version: 0.0.0-use.local
@@ -1746,7 +1787,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.0":
+"axios@npm:^1.6.0, axios@npm:^1.6.7":
   version: 1.6.7
   resolution: "axios@npm:1.6.7"
   dependencies:

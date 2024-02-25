@@ -62,10 +62,18 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 
 ## Next up
 
--   Make new services / packages structure pass tests + lints
+- set up auth service
+- set up next react project and make it call auth service directly (make it work e2e)
+- set up Api Gateway with a routing table
+- call from next react app to auth service via api gateway
+- display some data in the UI that verifies that everything works OK
+- set up auth database
+- set up a logging package (console)
+- start logging times and everything for all routes
+- set up TODO table in rest-api
+- be able to create todos in front end log in and log out and it persists per user
 
--   migrate ./services/rest-api/environment to ./packages/environment
--   set up auth service
+- start logging user signup events somehow
 
 ## Done
 
@@ -92,8 +100,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 -   [ ] Add users table
 
 ### Authservice
-
--   [ ] Start set up
 
 ### Api server
 
