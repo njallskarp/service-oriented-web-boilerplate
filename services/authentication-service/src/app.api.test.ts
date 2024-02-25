@@ -6,10 +6,10 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 
 describe('API Endpoints', () => {
-	describe('GET /api/hello_world', () => {
+	describe('GET /hello_world', () => {
 		it('should return Hello, World', (done) => {
 			chai.request(app)
-				.get('/api/hello_world')
+				.get('/hello_world')
 				.end((err, res) => {
 					expect(res).to.have.status(200);
 					expect(res).to.be.html;
