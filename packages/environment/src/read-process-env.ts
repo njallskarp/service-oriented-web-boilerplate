@@ -1,9 +1,5 @@
 import { exit } from 'process';
-import {
-	type ConstStringUnion,
-	type Environment,
-	type EnvkeysDescription,
-} from './types';
+import { type ConstStringUnion, type Environment, type EnvkeysDescription } from './types';
 
 /**
  * Read value from the node process environment. If
@@ -14,9 +10,7 @@ import {
  * @param variableName The environment variable name
  * @returns the value or undefined
  */
-const getEnvironmentVariableValue = (
-	variableName: string
-): string | undefined => {
+const getEnvironmentVariableValue = (variableName: string): string | undefined => {
 	return process.env[variableName];
 };
 
@@ -29,10 +23,7 @@ const getEnvironmentVariableValue = (
  * @param optionalKeysDescription A dictionary of environment variables (keys) with descriptions (values)
  * @returns
  */
-export const getEnvironmentObject = <
-	RequiredKeys extends ConstStringUnion,
-	OptionalKeys extends ConstStringUnion,
->(
+export const getEnvironmentObject = <RequiredKeys extends ConstStringUnion, OptionalKeys extends ConstStringUnion>(
 	requiredKeysDescription: EnvkeysDescription<RequiredKeys>,
 	optionalKeysDescription: EnvkeysDescription<OptionalKeys>
 ): Environment<RequiredKeys, OptionalKeys> => {

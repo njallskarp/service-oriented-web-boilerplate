@@ -62,10 +62,22 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 
 ## Next up
 
--   Make new services / packages structure pass tests + lints
-
--   migrate ./services/rest-api/environment to ./packages/environment
--   set up auth service
+- make NExt JS app with simple auth
+- display some data in the UI that verifies that everything works OK
+- set up auth database
+- set up a logging package (console)
+- start logging times and everything for all routes
+- set up TODO table in rest-api
+- be able to create todos in front end log in and log out and it persists per user
+- start logging user signup events
+- Create a custom express package that adds start time, request id, service name, service version, environment info (i.e. local, dev, test, prod)
+- create a logging package that logs events and replaces console. completely
+- README everywhere
+- comment all code
+- unit tests everywhere
+- api tests everywhere
+- end2end tests as needed
+- wordpress SAAS site
 
 ## Done
 
@@ -80,7 +92,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 ### Rest-api
 
 -   [ ] Swagger
--   [ ] Set up console logger
 -   [ ] Basic @Controller (status codes, error handling, status codes,)
 -   [ ] Models (simple TODO table)
 -   [ ] Set up models for dummy schema
@@ -92,8 +103,6 @@ Please adhere to the coding standards and guidelines provided in the `CONTRIBUTI
 -   [ ] Add users table
 
 ### Authservice
-
--   [ ] Start set up
 
 ### Api server
 

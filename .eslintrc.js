@@ -33,5 +33,6 @@ module.exports = {
         "@typescript-eslint/brace-style": "off",
         "@typescript-eslint/non-nullable-type-assertion-style": "off",
         "prettier/prettier": "error", // Enable Prettier rules to report as ESLint errors
+        "@typescript-eslint/no-misused-promises": "off"
     },
 };

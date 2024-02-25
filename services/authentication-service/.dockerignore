@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+
+# TypeScript compiled code (if you're compiling outside the Docker build process)
+dist/
+build/
+
+# Environment configuration files (assuming you use different method to handle them in Docker)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Development specific files
+**/*.ts
+**/*.tsx
+**/*.map
+src/
+test/
+tests/
+*.spec.ts
+*.test.ts
+tsconfig.json
+tslint.json
+
+# IDE specific files and directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache
+.npm/
+
+# Logs
+logs/
+*.log
