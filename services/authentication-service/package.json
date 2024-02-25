@@ -6,9 +6,9 @@
   "scripts": {
     "start:dev": "nodemon",
     "start:dev:native": "IS_NATIVE=Y nodemon",
-    "start:prod": "NODE_ENV=production node build/api-server/app.js",
-    "start:prod:native": "IS_NATIVE=Y NODE_ENV=production node build/api-server/app.js",
-    "start:prod:dry": "DRY_RUN=Y NODE_ENV=production node build/api-server/app.js",
+    "start:prod": "NODE_ENV=production node build/app.js",
+    "start:prod:native": "IS_NATIVE=Y NODE_ENV=production node build/app.js",
+    "start:prod:dry": "DRY_RUN=Y NODE_ENV=production node build/app.js",
     "build": "tsc --project tsconfig.json && tsc-alias build/",
     "test:api": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register 'src/**/*.api.test.ts' --exit",
     "test:api:watch": "cross-env NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register --watch 'src/**/*.api.test.ts'",
