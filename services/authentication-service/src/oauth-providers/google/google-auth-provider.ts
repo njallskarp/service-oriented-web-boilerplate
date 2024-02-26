@@ -3,6 +3,11 @@ import * as env from '../../environment';
 import { type GoogleTokenResult, type GoogleUserResult } from './interfaces';
 import axios from 'axios';
 
+/**
+ * Provides authentication services using Google's OAuth2 for web server applications.
+ * This class contains methods to generate the authentication URL, exchange the authorization
+ * code for tokens, and retrieve user information from Google's servers using the obtained tokens.
+ */
 export class GoogleAuthProvider implements AuthProvider {
 	// URLs
 	private static readonly AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -15,6 +20,10 @@ export class GoogleAuthProvider implements AuthProvider {
 		'https://www.googleapis.com/auth/userinfo.email',
 	];
 
+	/**
+	 * Generates the URL to redirect users for Google's OAuth2 authentication.
+	 * @returns The URL where users can authenticate with their Google account.
+	 */
 	getAuthUrl(): string {
 		const RESPONSE_TYPE = 'code';
 		const ACCESS_TYPE = 'online';
@@ -30,6 +39,11 @@ export class GoogleAuthProvider implements AuthProvider {
 		return `${GoogleAuthProvider.AUTH_URL}?${params.toString()}`;
 	}
 
+	/**
+	 * Exchanges the authorization code for an access token, ID token, and refresh token.
+	 * @param code - The authorization code received from Google after user authentication.
+	 * @returns A Promise that resolves to the token data including access token, ID token, refresh token, and others.
+	 */
 	async getToken(code: string): Promise<TokenData> {
 		const GRANT_TYPE = 'authorization_code';
 		const CONTENT_TYPE_HEADER_NAME = 'Content-Type';
@@ -60,6 +74,12 @@ export class GoogleAuthProvider implements AuthProvider {
 		};
 	}
 
+	/**
+	 * Retrieves the user's profile information from Google's servers using the access token and ID token.
+	 * @param accessToken - The access token obtained from Google.
+	 * @param idToken - The ID token obtained from Google.
+	 * @returns A Promise that resolves to the user's profile information.
+	 */
 	async getUserProfileFromServer(accessToken: string, idToken: string): Promise<UserResponseFromToken> {
 		const ALT_VALUE = 'json';
 		const params = new URLSearchParams({
